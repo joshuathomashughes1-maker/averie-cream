@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Averie & Cream</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <img src="averie logo.png" alt="Averie & Cream logo" class="logo-image">
+            <div class="hero-text">
+                <p class="eyebrow">Freshly baked daily</p>
+                <h1>Averie & Cream</h1>
+                <p>Cheese Cake for a special occasion or just for a snack?</p>
+                <a href="#order" class="btn">Place an Order</a>
+            </div>
+        </div>
+    </header>
+    <table>
+    <tr class="d0">
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    </tr>
+  <tr class="d1">
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+    <td>124</td>
+
+  </tr>
+    </table> 
+
+
+    <main>
+        <section class="info">
+            <div class="card">
+                <h2>About Us</h2>
+                <p>My name's Averie and I'm a solo baker for cheese cakes. I can do lots of different flavors that will rotate weekly!</p>
+            </div>
+            <div class="card">
+                <h2>Order Notice</h2>
+                <p>We currently take orders only. Please note that <b>all payments must be made in cash</b> when you pick up your order.</p>
+            </div>
+        </section>
+
+        <section class="products-section">
+            <h2>Featured Treats</h2>
+            <div class="products-grid">
+                <article class="product-card">
+                    <img src="https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?auto=format&fit=crop&w=800&q=80" alt="A layered cheesecake with berries">
+                    <h3>Signature Cheesecake</h3>
+                    <p>A CheeseCake made from the heart that <br>a family can share</br>.</p>
+                </article>
+                <article class="product-card">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Freshly baked croissants on a tray">
+                    <h3>CheeseCake Cup</h3>
+                    <p>A small cheesecake perfect for a quick treat. </p>
+                </article>
+                <article class="product-card">
+                    <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=800&q=80" alt="Decorated cupcakes on a cake stand">
+                    <h3>Custom Cheesecake</h3>
+                    <p>A personalised cheesecake made just for you. If its a birthday or a celebration!</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="order" class="order-section">
+            <h2>Order Form</h2>
+            <p class="hint">Tell us what you would like, and we will get back to you soon.</p>
+            <form>
+                <label>
+                    Name
+                    <input type="text" placeholder="Your name" required>
+                </label>
+                <label>
+                    Phone Number
+                    <input minlength="7" maxlength="15" type="int" placeholder="Phone number" required>
+                </label>
+                <label>
+                    Email
+                    <input type="email" placeholder="Email address" required>
+                    Order Details
+                    <textarea placeholder="Describe your order, such as 2 Cheesecake Cups, 1 Custom Cheesecake, etc." required></textarea>
+                </label>
+                <label>
+                    Rush Order
+                    <select id="rushType">
+                        <option value="standard">Standard pickup — no extra fee</option>
+                        <option value="next-day">Next-day rush — +$8</option>
+                        <option value="same-day">Same-day rush — +$20</option>
+                    </select>
+                </label>
+                <label>
+                    Pickup Date
+                    <input type="date" id="pickupDate" required>
+                </label>
+               
+                <p class="help-text">Pickup dates must be at least 2 days after placing your order. Rush fees are added to your total.</p>
+                <label>
+                    Notes
+                    <textarea placeholder="Any special requests? Such as dietary restrictions or specific flavors." ></textarea>
+                </label>
+                <button type="submit" class="btn">Send Order</button>
+            </form>
+            <p class="cash-note">No online payments are available. Orders are paid in cash only at pickup.</p>
+        </section>
+    </main>
+
+    <script>
+        const pickupDate = document.getElementById('pickupDate');
+
+        if (pickupDate) {
+            const today = new Date();
+            today.setDate(today.getDate() + 2);
+            const minDate = today.toISOString().split('T')[0];
+            pickupDate.min = minDate;
+            pickupDate.value = minDate;
+        }
+    </script>
+    <footer>
+        <p>&copy; 2026 Averie & Cream. All rights reserved.   &nbsp; <b>  Website by </b> <a href="https://www.instagram.com/joshua_h12345/?hl=en"  target="_blank">Joshua Hughes</a><b> on instagram </b></p>
+    </footer>
+</body>
+</html>
