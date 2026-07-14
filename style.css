@@ -24,7 +24,6 @@ body {
 
 .hero {
     background: linear-gradient(135deg, var(--sage) 0%, var(--avocado) 100%);
-    imag
     color: var(--white);
     padding: 2.5rem 1.2rem;
 }
