@@ -8,6 +8,9 @@
 </head>
 <body>
     <header class="hero">
+        <nav class="site-nav" aria-label="Bakery management">
+            <a class="order-book-link" href="/admin.html">Order Book <span>Admin sign-in</span></a>
+        </nav>
         <div class="hero-content">
             <img src="averie logo.png" alt="Averie & Cream logo" class="logo-image">
             <div class="hero-text">
@@ -86,7 +89,7 @@
                 </article>
                 <article class="product-card">
                     <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=800&q=80" alt="Decorated cupcakes on a cake stand">
-                    <h3>Custom Cheesecake</h3>
+                    <h3>Custom Full Cheesecake</h3>
                     <p>A personalised cheesecake made just for you. If its a birthday or a celebration!</p>
                 </article>
             </div>
@@ -94,25 +97,36 @@
 
         <section id="order" class="order-section">
             <h2>Order Form</h2>
-            <p class="hint">Tell us what you would like, and we will get back to you soon.</p>
-            <form>
+            <p class="hint">Choose your treats and pickup date. We’ll contact you to confirm availability and your total.</p>
+            <form id="orderForm">
                 <label>
                     Name
-                    <input type="text" placeholder="Your name" required>
+                    <input name="customerName" type="text" autocomplete="name" maxlength="120" placeholder="Your name" required>
                 </label>
                 <label>
                     Phone Number
-                    <input minlength="7" maxlength="15" type="int" placeholder="Phone number" required>
+                    <input name="customerPhone" minlength="7" maxlength="30" type="tel" autocomplete="tel" placeholder="Phone number" required>
                 </label>
                 <label>
                     Email
-                    <input type="email" placeholder="Email address" required>
-                    Order Details
-                    <textarea placeholder="Describe your order, such as 2 Cheesecake Cups, 1 Custom Cheesecake, etc." required></textarea>
+                    <input name="customerEmail" type="email" autocomplete="email" maxlength="254" placeholder="Email address" required>
+                </label>
+                <fieldset class="order-products">
+                    <legend>Your cheesecakes</legend>
+                    <p class="help-text">Enter a quantity for each treat you’d like. Leave the others at zero.</p>
+                    <div class="quantity-grid">
+                        <label>Signature Cheesecake<input type="number" name="signature-cheesecake" min="0" max="100" step="1" value="0" required></label>
+                        <label>Cheesecake Cup<input type="number" name="cheesecake-cup" min="0" max="100" step="1" value="0" required></label>
+                        <label>Custom Full Cheesecake<input type="number" name="custom-full-cheesecake" min="0" max="100" step="1" value="0" required></label>
+                    </div>
+                </fieldset>
+                <label>
+                    Flavor or custom design
+                    <textarea name="orderDetails" maxlength="2000" placeholder="Your preferred flavors, size, celebration, or custom design."></textarea>
                 </label>
                 <label>
                     Rush Order
-                    <select id="rushType">
+                    <select id="rushType" name="rushType">
                         <option value="standard">Standard pickup — no extra fee</option>
                         <option value="next-day">Next-day rush — +$8</option>
                         <option value="same-day">Same-day rush — +$20</option>
@@ -120,31 +134,24 @@
                 </label>
                 <label>
                     Pickup Date
-                    <input type="date" id="pickupDate" required>
+                    <input type="date" id="pickupDate" name="pickupDate" required>
                 </label>
                
-                <p class="help-text">Pickup dates must be at least 2 days after placing your order. Rush fees are added to your total.</p>
+                <p class="help-text" id="pickupHelp">Standard orders need at least 2 days’ notice. Rush pickup is subject to confirmation; rush fees are added to your total.</p>
                 <label>
                     Notes
-                    <textarea placeholder="Any special requests? Such as dietary restrictions or specific flavors." ></textarea>
+                    <textarea name="customerNotes" maxlength="2000" placeholder="Any special requests? Such as dietary restrictions or specific flavors."></textarea>
                 </label>
-                <button type="submit" class="btn">Send Order</button>
+                <label class="honeypot" aria-hidden="true">Leave this blank<input name="website" tabindex="-1" autocomplete="off"></label>
+                <button type="submit" class="btn" disabled>Send Order</button>
+                <p id="orderMessage" class="form-message" role="status" aria-live="polite" tabindex="-1"></p>
+                <noscript>JavaScript is needed to send an order. Please enable it in your browser.</noscript>
             </form>
             <p class="cash-note">No online payments are available. Orders are paid in cash only at pickup.</p>
         </section>
     </main>
 
-    <script>
-        const pickupDate = document.getElementById('pickupDate');
-
-        if (pickupDate) {
-            const today = new Date();
-            today.setDate(today.getDate() + 2);
-            const minDate = today.toISOString().split('T')[0];
-            pickupDate.min = minDate;
-            pickupDate.value = minDate;
-        }
-    </script>
+    <script type="module" src="/order.js"></script>
     <footer>
         <p>&copy; 2026 Averie & Cream. All rights reserved.   &nbsp; <b>  Website by </b> <a href="https://www.instagram.com/joshua_h12345/?hl=en"  target="_blank">Joshua Hughes</a><b> on instagram </b></p>
     </footer>

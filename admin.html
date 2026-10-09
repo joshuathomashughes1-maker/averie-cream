@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Order Book · Averie & Cream</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body class="admin-page">
+  <header class="admin-header">
+    <a href="/" class="brand-link"><img src="averie logo.png" alt="Averie & Cream" width="58" height="58"><span>Averie & Cream<small>The baker’s order book</small></span></a>
+    <a href="/" class="storefront-link">Back to the bakery</a>
+  </header>
+  <main class="admin-main">
+    <section id="loginPanel" class="login-panel">
+      <div class="login-intro"><p class="admin-eyebrow">FOR THE BAKER</p><h1>A little order.<br>A lot of love.</h1><p>Your cheesecakes, your customers, your day.<br>Sign in to open your private order book.</p><span class="private-seal">Private · Admin access only</span></div>
+      <div class="login-card">
+        <h2 id="loginTitle">Welcome back</h2>
+        <p id="loginHint">Use the account invited by the site owner.</p>
+        <form id="loginForm">
+          <label>Email<input name="email" type="email" autocomplete="username" maxlength="254" required></label>
+          <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+          <button class="btn" type="submit">Open order book</button>
+        </form>
+        <form id="passwordForm" hidden>
+          <label>New password<input name="password" type="password" autocomplete="new-password" minlength="12" required></label>
+          <label>Confirm password<input name="confirmPassword" type="password" autocomplete="new-password" minlength="12" required></label>
+          <button class="btn" type="submit">Set password</button>
+        </form>
+        <button id="forgotPassword" class="text-button" type="button">Forgot your password?</button>
+        <p id="loginMessage" class="form-message" role="status" aria-live="polite"></p>
+        <noscript>Enable JavaScript to securely manage your orders.</noscript>
+      </div>
+    </section>
+    <section id="dashboard" hidden>
+      <div class="dashboard-heading"><div><p class="admin-eyebrow">BAKED WITH CARE, KEPT IN ORDER</p><h1>Your order book</h1><p id="accountLabel"></p></div><button id="logout" class="secondary-button" type="button">Sign out</button></div>
+      <div class="stats-grid" aria-label="Order summary">
+        <div class="stat"><span>New requests</span><strong id="newCount">—</strong></div>
+        <div class="stat"><span>In the kitchen</span><strong id="kitchenCount">—</strong></div>
+        <div class="stat"><span>Ready for pickup</span><strong id="readyCount">—</strong></div>
+      </div>
+      <form id="filterForm" class="filter-bar">
+        <label>Find a customer<input type="search" name="search" placeholder="Name, email, or phone" maxlength="120"></label>
+        <label>Order status<select name="status"><option value="all">All orders</option><option value="new">New</option><option value="confirmed">Confirmed</option><option value="baking">Baking</option><option value="ready">Ready for pickup</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option></select></label>
+        <button class="secondary-button" type="submit">Find orders</button>
+        <button id="refresh" class="text-button" type="button">Refresh</button>
+      </form>
+      <p id="dashboardMessage" class="form-message" role="status" aria-live="polite"></p>
+      <p id="orderCount" class="order-count"></p>
+      <div id="orderList" class="order-list" aria-busy="false"></div>
+      <nav class="pagination" aria-label="Order pages"><button id="previous" class="secondary-button" type="button" disabled>Previous</button><span id="pageLabel"></span><button id="next" class="secondary-button" type="button" disabled>Next</button></nav>
+    </section>
+  </main>
+  <template id="orderTemplate">
+    <article class="order-card">
+      <div class="order-card-heading"><div><p class="order-reference"></p><h2 class="customer-name"></h2></div><span class="status-badge"></span></div>
+      <div class="order-card-body">
+        <div class="order-details"><h3>On the menu</h3><ul class="item-list"></ul><p class="pickup-info"></p><p class="rush-info"></p><p class="request-info"></p><p class="customer-notes"></p><div class="customer-contact"><a class="email-link"></a><a class="phone-link"></a></div><small class="placed-at"></small></div>
+        <form class="order-update"><label>Status<select name="status"><option value="new">New</option><option value="confirmed">Confirmed</option><option value="baking">Baking</option><option value="ready">Ready for pickup</option><option value="completed">Completed</option><option value="cancelled">Cancelled</option></select></label><label class="checkbox-label"><input type="checkbox" name="cashPaid">Cash payment received</label><label>Private baker’s notes<textarea name="ownerNotes" maxlength="2000" placeholder="A reminder just for you"></textarea></label><button class="btn" type="submit">Save changes</button><p class="save-message" role="status" aria-live="polite"></p></form>
+      </div>
+    </article>
+  </template>
+  <script type="module" src="/admin.js"></script>
+</body>
+</html>

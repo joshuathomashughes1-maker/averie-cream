@@ -37,6 +37,36 @@ body {
     justify-content: center;
 }
 
+.site-nav {
+    max-width: 900px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.order-book-link {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 0.75rem;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--text);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.order-book-link span {
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.order-book-link:hover {
+    background: var(--honey);
+}
+
 .hero-text {
     display: flex;
     flex-direction: column;
@@ -240,5 +270,58 @@ button:hover {
 
     .order-section {
         padding: 1.5rem 2rem 2rem;
+    }
+}
+
+.order-products {
+    border: 1px solid var(--blush);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.order-products legend {
+    padding: 0 0.4rem;
+    font-weight: 700;
+}
+
+.quantity-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.form-message:empty {
+    display: none;
+}
+
+.form-message {
+    background: var(--honey);
+    padding: 1rem;
+    border-radius: 10px;
+    overflow-wrap: anywhere;
+}
+
+.error {
+    color: #8b2727;
+}
+
+.honeypot {
+    position: absolute;
+    left: -10000px;
+}
+
+button:disabled {
+    cursor: wait;
+    opacity: 0.6;
+}
+
+:focus-visible {
+    outline: 3px solid var(--sage);
+    outline-offset: 3px;
+}
+
+@media (min-width: 700px) {
+    .quantity-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
